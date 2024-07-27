@@ -216,15 +216,15 @@ display: flex;
 }
 
 .link-container {
-    display: flex; /* Usar flexbox */
-    justify-content: center; /* Centralizar horizontalmente */
-    align-items: center; /* Alinhar verticalmente */
-    gap: 1rem; /* Espaçamento entre os links */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 1rem; 
 }
 
 .links {
     text-decoration: none;
-    font-size: 1rem; /* Mantenha o tamanho da fonte */
+    font-size: 1rem; 
     color: var(--cor-primaria);
     font-weight: 600;
     padding: 1rem;
