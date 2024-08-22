@@ -13,7 +13,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="Imagineart" href="https://www.imagine.art/dashboard">
-
+    <style>
+        .mensagem {
+            display: none; 
+            color: #FF00FF;
+            font-weight: bold;
+        }
+        .mensagem.show {
+            display: block; 
+        }
+    </style>
 </head>
 <body>
     <header class="cabecalho">
@@ -24,9 +33,7 @@
     </header>
     <main>
         <section class="area">
-            
-                <textarea class="texto-area" id="texto-area" cols="41" rows="4" placeholder="Digite seu texto"></textarea>
-            
+            <textarea class="texto-area" id="texto-area" cols="41" rows="4" placeholder="Digite seu texto"></textarea>
             <div>
                 <div class="informacoes">
                     <h4>Apenas letras minúsculas e sem acento!</h4>
@@ -42,14 +49,13 @@
                 <textarea class="texto-resposta" id="texto-resposta" cols="41" rows="4" readonly></textarea>
             </div>
             <div class="campo">
-                <h3 class="mensagem">Nenhuma mensagem encontrada</h2>
+                <h3 id="mensagem" class="mensagem">Nenhuma mensagem encontrada</h3>
             </div>
             <div>
                 <button type="button" onclick="recortar()" class="bnt_copiar"><b>Copiar</b></button>
             </div>
         </section>
     </main>
-    
     <footer class="rodape">
         <p>Desenvolvido por Manoela Feitosa</p>
         <div class="link-container">

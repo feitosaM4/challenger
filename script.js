@@ -1,12 +1,6 @@
 const textArea = document.querySelector(".texto-area");
 const textoResposta = document.querySelector(".texto-resposta");
-
-// As "chaves" de criptografia que utilizaremos são:
-// A letra "e" é convertida para "enter"
-// A letra "i" é convertida para "imes"
-// A letra "a" é convertida para "ai"
-// A letra "o" é convertida para "ober"
-// A letra "u" é convertida para "ufat"
+const mensagem = document.getElementById("mensagem");
 
 function criptografar() {
     const textoCriptografado = criptografarTexto(textArea.value);
@@ -56,13 +50,12 @@ function descriptografarTexto(stringDescriptografar) {
 }
 
 function recortar() {
-    
+   
     if (textoResposta.value.trim() === "") {
-       
-        textoResposta.textContent = 'Nenhuma mensagem encontrada';
+        mensagem.textContent = 'Nenhuma mensagem encontrada';
+        mensagem.classList.add('show');
     } else {
-       
-        textoResposta.textContent = '';
+        mensagem.classList.remove('show');
     }
 
    
@@ -70,17 +63,16 @@ function recortar() {
 
     
     navigator.clipboard.writeText(textoResposta.value).then(() => {
-       
+        
         textoResposta.value = '';
     }).catch(err => {
-        console.error('Falha ao cortar o texto: ', err);
+        console.error('Falha ao copiar o texto: ', err);
     });
 
     atualizarVisibilidade(textoResposta.value);
 }
 
-
 function atualizarVisibilidade(texto) {
- 
+   
     console.log('Atualizar visibilidade com texto:', texto);
 }
