@@ -1,95 +1,86 @@
-const substituicoes = {
-    'e': 'enter',
-    'i': 'imes',
-    'a': 'ai',
-    'o': 'ober',
-    'u': 'ufat'
-};
+const textArea = document.querySelector(".texto-area");
+const textoResposta = document.querySelector(".texto-resposta");
 
+// As "chaves" de criptografia que utilizaremos são:
+// A letra "e" é convertida para "enter"
+// A letra "i" é convertida para "imes"
+// A letra "a" é convertida para "ai"
+// A letra "o" é convertida para "ober"
+// A letra "u" é convertida para "ufat"
 
 function criptografar() {
-    const textoOriginal = document.getElementById('textoinput').value.toLowerCase();
-    let textoCriptografado = "";
-
-    for (let letra of textoOriginal) {
-        textoCriptografado += substituicoes[letra] || letra;
-    }
-
-    document.getElementById('outputtexto').value = textoCriptografado;
-    atualizarVisibilidade(textoCriptografado);
+    const textoCriptografado = criptografarTexto(textArea.value);
+    textoResposta.value = textoCriptografado;
+    textArea.value = "";
 }
 
+function criptografarTexto(stringCriptografar) {
+    let matrizCodigo = [
+        ["a", "ai"],
+        ["e", "enter"],
+        ["i", "imes"],
+        ["o", "ober"],
+        ["u", "ufat"]
+    ];
+
+    stringCriptografar = stringCriptografar.toLowerCase();
+
+    for (let i = 0; i < matrizCodigo.length; i++) {
+        stringCriptografar = stringCriptografar.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
+    }
+
+    return stringCriptografar;
+}
 
 function descriptografar() {
-    const textoCriptografado = document.getElementById('textoinput').value.toLowerCase();
-    let textoOriginal = "";
-    let i = 0;
-
-    while (i < textoCriptografado.length) {
-        let encontrado = false;
-
-        for (let chave in substituicoes) {
-            if (textoCriptografado.startsWith(substituicoes[chave], i)) {
-                textoOriginal += chave;
-                i += substituicoes[chave].length;
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (!encontrado) {
-            textoOriginal += textoCriptografado[i];
-            i++;
-        }
-    }
-
-    document.getElementById('outputtexto').value = textoOriginal;
-    atualizarVisibilidade(textoOriginal);
+    const textoDescriptografado = descriptografarTexto(textArea.value);
+    textoResposta.value = textoDescriptografado;
 }
 
+function descriptografarTexto(stringDescriptografar) {
+    let matrizCodigo = [
+        ["a", "ai"],
+        ["e", "enter"],
+        ["i", "imes"],
+        ["o", "ober"],
+        ["u", "ufat"]
+    ];
+
+    stringDescriptografar = stringDescriptografar.toLowerCase();
+
+    for (let i = 0; i < matrizCodigo.length; i++) {
+        stringDescriptografar = stringDescriptografar.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]);
+    }
+
+    return stringDescriptografar;
+}
 
 function recortar() {
-    const outputTexto = document.getElementById('outputtexto');
-    const menssagem = document.querySelector('.menssagem'); 
-    // Verifica se há texto para recortar
-    if (outputTexto.value.trim() === "") {
-        menssagem.textContent = 'Nenhuma mensagem encontrada'; 
+    
+    if (textoResposta.value.trim() === "") {
+       
+        textoResposta.textContent = 'Nenhuma mensagem encontrada';
     } else {
-        menssagem.textContent = ''; 
+       
+        textoResposta.textContent = '';
     }
 
    
-    outputTexto.select();
-    document.execCommand('copy'); 
-    
-   
-    outputTexto.value = '';
+    textoResposta.select();
 
     
-    atualizarVisibilidade(outputTexto.value);
+    navigator.clipboard.writeText(textoResposta.value).then(() => {
+       
+        textoResposta.value = '';
+    }).catch(err => {
+        console.error('Falha ao cortar o texto: ', err);
+    });
 
-    alert('Texto copiado e removido da área de saída.');
+    atualizarVisibilidade(textoResposta.value);
 }
 
+
 function atualizarVisibilidade(texto) {
-    const imagem1 = document.getElementById('imagem1');
-    const imagem2 = document.getElementById('imagem2');
-    const menssagem = document.querySelector('.menssagem');
-    const instrucoes = document.querySelector('.instrucoes');
-
-    console.log("Texto recebido:", texto); 
-
-    if (texto.trim() === "") {
-        console.log("Texto vazio - mostrando imagem2 e menssagem"); 
-        imagem2.style.display = 'block';
-        menssagem.style.display = 'none';
-        instrucoes.style.display = 'block';
-    } else {
-        console.log("Texto não vazio - mostrando instrucoes"); 
-        imagem2.style.display = 'none';
-        menssagem.style.display = 'none';
-        instrucoes.style.display = 'block';
-    }
-
-    imagem1.style.display = 'block'; 
+ 
+    console.log('Atualizar visibilidade com texto:', texto);
 }

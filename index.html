@@ -1,61 +1,66 @@
-
 <!DOCTYPE html>
-<html lang="ptbr">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decodificador</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/meuplaneta.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/meuplaneta.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/meuplaneta.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="Imagineart" href="https://www.imagine.art/dashboard">
+
 </head>
 <body>
     <header class="cabecalho">
-        <img src="assets/favicon.ico" alt="logo da Alura">
+        <div class="sigla">
+            <span>M</span>
+            <span>F</span>
+        </div>
     </header>
-    <main class="containermain">
-        <section class="inputarea">
-            <form>
-                <textarea id="textoinput" placeholder="Digite seu texto"></textarea>
-            </form>
-            <div class="input_bnt_img">
-                <div class="botoes">
-                    <button id = "codificar" type="button" onclick="criptografar()" class="bnt_criptografar"> Criptografar</button>
-                    <button id = "Decodificar" type="button" onclick="descriptografar()" class="bnt_descriptografar"> Descriptografar</button>
+    <main>
+        <section class="area">
+            
+                <textarea class="texto-area" id="texto-area" cols="41" rows="4" placeholder="Digite seu texto"></textarea>
+            
+            <div>
+                <div class="informacoes">
+                    <h4>Apenas letras minúsculas e sem acento!</h4>
                 </div>
-                <div class="img_instrucoes">
-                    <img src="assets/Frame 1.png" alt="simbolo de ! e a frase Apenas letras minúsculas e sem acento.">
+                <div class="botoes">
+                    <button id="criptografar" type="button" onclick="criptografar()" class="bnt_criptografar"><b>Criptografar</b></button>
+                    <button id="descriptografar" type="button" onclick="descriptografar()" class="bnt_descriptografar"><b>Descriptografar</b></button>
                 </div>
             </div>
         </section>
-        <section class=outputarea">
-            <textarea id="outputtexto" readonly></textarea>
-            
-            <div class="campo">
-                <img src="assets/Rectangle 1.png" id="imagem1" alt="retângulo vertical branco">
-                <img src="assets/menin.png" id="imagem2" alt="Pessoa ajoelhada examina um diamante com uma lupa">
-                <h2 class="menssagem">Nenhuma mensagem encontrada</h2>
-                <span class="instrucoes"><em>Digite um texto que você deseja criptografar ou descriptografar.</em></span>   
+        <section class="area-mensagem">
+            <div>
+                <textarea class="texto-resposta" id="texto-resposta" cols="41" rows="4" readonly></textarea>
             </div>
-            <button type="button" onclick="recortar()" class="bnt_copiar">Copiar</button>
+            <div class="campo">
+                <h3 class="mensagem">Nenhuma mensagem encontrada</h2>
+            </div>
+            <div>
+                <button type="button" onclick="recortar()" class="bnt_copiar"><b>Copiar</b></button>
+            </div>
         </section>
     </main>
+    
     <footer class="rodape">
-        <p>Desenvolvido por Manoela Feitosa</p> 
+        <p>Desenvolvido por Manoela Feitosa</p>
         <div class="link-container">
-            <a class="links" href="https://github.com/feitosaM4"> <img src="assets/github.png" > Github</a>
-            <a class="links" href="https://www.linkedin.com/in/manoela-feitosa-a86944172"> <img src="assets/linkedin.png"> linkedin </a>
-
+            <a class="links" href="https://github.com/feitosaM4" target="_blank" rel="noopener noreferrer">
+                <img src="assets/github.png" alt="Logo do Github"> Github
+            </a>
+            <a class="links" href="https://www.linkedin.com/in/manoela-feitosa-a86944172" target="_blank" rel="noopener noreferrer">
+                <img src="assets/linkedin.png" alt="Logo do LinkedIn"> LinkedIn
+            </a>
         </div>
-        
     </footer>
     <script src="script.js"></script>
 </body>
 </html>
-
-
